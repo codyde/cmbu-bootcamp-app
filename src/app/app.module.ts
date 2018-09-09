@@ -3,9 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ClarityModule, ClrFormsNextModule } from '@clr/angular';
 import { AppComponent } from './app.component';
-import { ChartsModule } from 'ng2-charts';
 import { FormsModule } from "@angular/forms";
-import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
@@ -16,7 +14,6 @@ import { HttpClientModule } from '@angular/common/http'
     BrowserModule,
     BrowserAnimationsModule,
     ClarityModule,
-    ChartsModule,
     ClrFormsNextModule,
     FormsModule,
     HttpClientModule
@@ -25,5 +22,3 @@ import { HttpClientModule } from '@angular/common/http'
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-platformBrowserDynamic().bootstrapModule(AppModule);

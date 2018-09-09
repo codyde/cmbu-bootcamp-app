@@ -34,7 +34,7 @@
                 <label for="example" class="clr-control-label">Message</label>
                 <div class="clr-control-container">
                     <div class="clr-input-wrapper">
-                        <input type="textfield" [(ngModel)]="message.message" name="message" id="message" placeholder="Enter the message you want to post" class="clr-textarea" style="width: 500px;" required>
+                        <input type="textfield" [(ngModel)]="message.text" name="text" id="text" placeholder="Enter the message you want to post" class="clr-textarea" style="width: 500px;" required>
                         <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
                     </div>
                 </div>
@@ -57,16 +57,6 @@
                   </div>
               </div>
         </div>
-          </div>
-        <div class="row chart" style="width: 60%;">
-            <canvas
-                baseChart
-                [chartType]="'pie'"
-                [datasets]="chartData"
-                [labels]="chartLabels"
-                [options]="chartOptions"
-                [legend]="true">
-            </canvas>
           </div>
       </div>
       <nav class="sidenav">

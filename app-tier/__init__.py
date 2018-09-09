@@ -20,7 +20,7 @@ mysql.init_app(app)
 def insert_post():
     req = request.get_json()
     _title = req['title']
-    _text = req['message']
+    _text = req['text']
     conn = mysql.connect()
     cursor = conn.cursor()
     insertQuery = "INSERT INTO textData (title, text) VALUES (%s, %s)"
