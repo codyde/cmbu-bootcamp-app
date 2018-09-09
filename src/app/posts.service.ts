@@ -15,8 +15,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class PostsService {
-  private baseUrl: string = 'http://172.24.9.148:5000/api/posts'
-  private postUrl: string = 'http://172.24.9.148:5000/api/post'
+  private baseUrl: string = 'http://pyapi:5000/api/posts'
+  private postUrl: string = 'http://pyapi:5000/api/post'
 
  constructor(private http: HttpClient){ 
  }
@@ -27,7 +27,6 @@ export class PostsService {
 
  newPost(form){
    return this.http.post(this.postUrl, form, httpOptions)
-   form.resetForm()
  }
  
 }
