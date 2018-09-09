@@ -1,20 +1,81 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="main-container">
+  <header class="header-6">
+    <div class="branding">
+        <a href="..." class="nav-link">
+            <clr-icon shape="vm-bug"></clr-icon>
+            <span class="title">CMBU BootCamp Demo App</span>
+        </a>
+    </div>
+    <div class="header-actions">
+        <a href="..." class="nav-link nav-icon">
+            <clr-icon shape="cog"></clr-icon>
+        </a>
+    </div>
+  </header>
+  <div class="content-container">
+      <div class="content-area">
+        <div style="text-align:center">
+          <h1>
+            Welcome to the 2018 Cloud Management Bootcamp!
+          </h1>
+        </div>
+
+        <form #f="ngForm" class="clr-form clr-form-horizontal" (ngSubmit)="onSubmit(f.value)">
+            <div class="clr-form-control">
+                <label for="example" class="clr-control-label">Title</label>
+                <div class="clr-control-container">
+                    <div class="clr-input-wrapper">
+                        <input type="text" [(ngModel)]="message.title" name="title" id="title" placeholder="Enter the Message Title" class="clr-text" required>
+                        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="clr-form-control">
+                <label for="example" class="clr-control-label">Message</label>
+                <div class="clr-control-container">
+                    <div class="clr-input-wrapper">
+                        <input type="textfield" [(ngModel)]="message.message" name="message" id="message" placeholder="Enter the message you want to post" class="clr-textarea" style="width: 500px;" required>
+                        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div>
+                <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" *ngFor = "let text of messages">
+              <div class="card">
+                    <div class="card-header">
+                            {{text.title}}
+                        </div>
+                  <div class="card-block">
+                      <div class="card-text">
+                          {{text.text}}
+                      </div>
+                  </div>
+              </div>
+        </div>
+          </div>
+        <div class="row chart" style="width: 60%;">
+            <canvas
+                baseChart
+                [chartType]="'pie'"
+                [datasets]="chartData"
+                [labels]="chartLabels"
+                [options]="chartOptions"
+                [legend]="true">
+            </canvas>
+          </div>
+      </div>
+      <nav class="sidenav">
+          <section class="sidenav-content">
+              <img class="logo" width="100" alt="vRA Logo" src="../assets/vRA-Product-Icon.png">
+          </section>
+      </nav>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+
+
 
