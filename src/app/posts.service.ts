@@ -15,8 +15,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class PostsService {
-  private baseUrl: string = 'http://pyapi:5000/api/posts'
-  private postUrl: string = 'http://pyapi:5000/api/post'
+  private baseUrl: string = 'http://pyapi/api/posts'
+  private postUrl: string = 'http://pyapi/api/post'
 
  constructor(private http: HttpClient){ 
  }
