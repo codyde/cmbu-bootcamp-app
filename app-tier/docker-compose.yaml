@@ -1,0 +1,22 @@
+# use this with `docker-compose up` against a generic Docker end-point (e.g. standalone Docker)
+version: "3.7"
+
+services:
+  
+  frontend:
+    image: frontend:latest
+    depends_on:
+      - pyapi
+    ports:
+      - 80:80
+    networks:
+      - cmbu-network
+
+  pyapi:
+    image: backend:latest
+    networks:
+      - cmbu-network
+
+networks:
+  cmbu-network:
+    driver: bridge # a user defined bridge is required; the default bridge network doesn't support name resolution
