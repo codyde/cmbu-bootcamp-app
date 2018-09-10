@@ -3,6 +3,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Message } from './message'
+import { environment } from '../environments/environment.prod';
+
 
 
 const httpOptions = {
@@ -15,8 +17,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class PostsService {
-  private baseUrl: string = 'http://localhost/api/posts'
-  private postUrl: string = 'http://localhost/api/post'
+
+  
+
+  private baseUrl: string = environment.api_server+'/api/posts'
+  private postUrl: string = environment.api_server+'/api/post'
 
  constructor(private http: HttpClient){ 
  }
