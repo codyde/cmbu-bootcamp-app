@@ -1,41 +1,33 @@
 from flask import Flask, jsonify, request
 import requests
-from flaskext.mysql import MySQL
+import json
 from flask_cors import CORS
+import psycopg2
+from psycopg2.extras import RealDictCursor
 
 app = Flask(__name__)
 CORS(app)
-mysql = MySQL()
-
-# MySQL configurations
-app.config['MYSQL_DATABASE_USER'] = 'user'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'password'
-app.config['MYSQL_DATABASE_DB'] = 'posts'
-app.config['MYSQL_DATABASE_HOST'] = '172.24.9.148'
-
-mysql.init_app(app)
-
 
 @app.route("/api/post", methods=["POST"])
 def insert_post():
     req = request.get_json()
+    print(req)
     _title = req['title']
     _text = req['text']
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    insertQuery = "INSERT INTO textData (title, text) VALUES (%s, %s)"
-    cursor.execute(insertQuery, (_title, _text))
+    conn = psycopg2.connect("host=db dbname=posts user=postgres password=postgres_password")
+    cur = conn.cursor()
+    cur.execute("INSERT INTO textData (title, text) VALUES (%s, %s)", (_title, _text))
     conn.commit()
-    conn.close()
     return request.data
 
 @app.route("/api/posts", methods=["GET"])
 def get_posts():
-    cur = mysql.connect().cursor()
-    cur.execute('''select * from posts.textData''')
-    r = [dict((cur.description[i][0], value)
-              for i, value in enumerate(row)) for row in cur.fetchall()]
-    return jsonify(r)
+    conn = psycopg2.connect("host=db dbname=posts user=postgres password=postgres_password")
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    data = cur.execute('SELECT * FROM textData')
+    test = cur.fetchall()
+    print(json.dumps(test))
+    return jsonify(test)
 
 @app.after_request
 def after_request(response):

@@ -1,4 +1,4 @@
 requests
 flask
-flask-mysql
+psycopg2
 flask_cors

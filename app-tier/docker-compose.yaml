@@ -14,8 +14,18 @@ services:
 
   pyapi:
     image: backend:latest
+    depends_on: 
+      - db
     networks:
       - cmbu-network
+
+  db: 
+    image: db:latest
+    environment:
+      POSTGRES_USER: postgres
+    networks:
+      - cmbu-network
+
 
 networks:
   cmbu-network:
