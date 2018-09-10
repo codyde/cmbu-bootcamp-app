@@ -4,7 +4,7 @@ version: "3.7"
 services:
   
   frontend:
-    image: frontend:latest
+    image: codydearkland/cmbu-app-frontend:latest 
     depends_on:
       - pyapi
     ports:
@@ -13,14 +13,14 @@ services:
       - cmbu-network
 
   pyapi:
-    image: backend:latest
+    image: codydearkland/cmbu-app-backend:latest
     depends_on: 
       - db
     networks:
       - cmbu-network
 
   db: 
-    image: db:latest
+    image: codydearkland/cmbu-db-app:latest
     environment:
       POSTGRES_USER: postgres
     networks:
