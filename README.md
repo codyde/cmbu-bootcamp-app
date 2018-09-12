@@ -21,6 +21,6 @@ This application was created to get away form demoing Wordpress as the "gold sta
 
 # Tier 3 - DB Tier - Data 
 
-* Postgresql database (named 'posts')
+* Postgresql 9.5 database (named 'posts')
 * Precreated table (named 'textData') 
 
