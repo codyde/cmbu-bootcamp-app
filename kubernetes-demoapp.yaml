@@ -1,0 +1,128 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: db
+  labels:
+    app: bootcamp
+spec:
+  selector:
+    matchLabels:
+      app: bootcamp
+      role: db
+      tier: backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: bootcamp
+        role: db
+        tier: backend
+    spec:
+      containers:
+      - name: db
+        image: codydearkland/cmbu-db-app:latest  # or just image: redis
+        ports:
+        - containerPort: 5432
+--
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: pyapi
+  labels:
+    app: bootcamp
+spec:
+  selector:
+    matchLabels:
+      app: bootcamp
+      role: api
+      tier: backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: bootcamp
+        role: api
+        tier: backend
+    spec:
+      containers:
+      - name: pyapi
+        image: codydearkland/cmbu-app-backend:latest  # or just image: redis
+        ports:
+        - containerPort: 80
+--
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: cmbu-app-frontend
+  labels:
+    app: bootcamp
+spec:
+  selector:
+    matchLabels:
+      app: bootcamp
+      role: web
+      tier: frontend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: bootcamp
+        role: web
+        tier: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: codydearkland/cmbu-app-frontend:latest  # or just image: redis
+        ports:
+        - containerPort: 80
+--
+apiVersion: v1
+kind: Service
+metadata:
+  name: pyapi
+  labels:
+    app: bootcamp
+    role: api
+    tier: backend
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: bootcamp
+    role: api
+    tier: backend
+--
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  labels:
+    app: bootcamp
+    role: db
+    tier: backend
+spec:
+  ports:
+  - port: 5432
+  selector:
+    app: bootcamp
+    role: db
+    tier: backend
+--
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: bootcamp
+    role: web
+    tier: frontend
+  name: frontend
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: bootcamp
+    role: web
+    tier: frontend
+  type: LoadBalancer
