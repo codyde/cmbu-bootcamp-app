@@ -28,4 +28,4 @@ This application was created to get away form demoing Wordpress as the "gold sta
 ## Todo's
 
 * Merge flask routes into 1 route instead of 2 (RESTful Model) 
-* Leverage GIT Branching to change ClarityUI theme light to dark 
+* Leverage GIT Branching to change ClarityUI theme Light to Dark 
