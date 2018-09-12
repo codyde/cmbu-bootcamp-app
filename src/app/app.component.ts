@@ -19,7 +19,7 @@ export class AppComponent {
 
   public message: Message = <Message>{};
 
-  public messages = []; // where is it being used
+  public messages = [];
 
   constructor(private postsService: PostsService) {}
 
