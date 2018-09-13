@@ -31,3 +31,4 @@ This application was created to get away form demoing Wordpress as the "gold sta
 * Leverage GIT Branching to change ClarityUI theme Light to Dark
 * More UI additions 
 * Correct issues with dockerbuilds not refreshing 
+* Include new routing 
