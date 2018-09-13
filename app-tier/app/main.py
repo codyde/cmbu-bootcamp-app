@@ -29,6 +29,11 @@ def get_posts():
     print(json.dumps(test))
     return jsonify(test)
 
+@app.route("/api/health", methods=["GET"])
+def get_health():
+    stats = "{'status':'completed','platform':'healthy'}"
+    return jsonify(stats)
+
 @app.after_request
 def after_request(response):
     response.headers.add('Access-Control-Allow-Origin', '*')
