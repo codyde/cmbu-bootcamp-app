@@ -32,6 +32,7 @@ def get_posts():
 @app.route("/api/health", methods=["GET"])
 def get_health():
     stats = "{'status':'completed','platform':'healthy'}"
+    print(stats)
     return jsonify(stats)
 
 @app.after_request
