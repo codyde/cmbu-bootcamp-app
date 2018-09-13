@@ -2,9 +2,12 @@
 version: "3.7"
 
 services:
-  
+
   frontend:
-    image: codydearkland/cmbu-app-frontend:latest 
+    build:
+      context: ./frontend-tier
+      dockerfile: ./Dockerfile
+    image: codydearkland/cmbu-app-frontend:latest
     depends_on:
       - pyapi
     ports:
@@ -13,13 +16,19 @@ services:
       - cmbu-network
 
   pyapi:
+    build:
+      context: ./app-tier
+      dockerfile: ./Dockerfile
     image: codydearkland/cmbu-app-backend:latest
-    depends_on: 
+    depends_on:
       - db
     networks:
       - cmbu-network
 
-  db: 
+  db:
+    build:
+      context: ./db-tier
+      dockerfile: ./Dockerfile
     image: codydearkland/cmbu-db-app:latest
     environment:
       POSTGRES_USER: postgres
