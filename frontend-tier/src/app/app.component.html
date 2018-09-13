@@ -29,7 +29,7 @@
                     <label for="example" class="clr-control-label">Message</label>
                     <div class="clr-control-container">
                         <div class="clr-input-wrapper">
-                            <input type="textfield" [(ngModel)]="message.text" name="text" id="text" placeholder="Enter the message you want to post"
+                            <input type="textfield" [(ngModel)]="message.text" name="text" id="text" placeholder="Message Text"
                                 class="clr-textarea" style="width: 500px;" required>
                             <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
                         </div>
@@ -58,8 +58,9 @@
         <nav class="sidenav">
             <section class="sidenav-content">
                 <img class="logo" width="100" alt="vRA Logo" src="../assets/ca.svg">
-                <ngx-twitter-timeline [data]="{sourceType: 'url', url: 'https://twitter.com/codydearkland'}" [opts]="{tweetLimit: 5}"></ngx-twitter-timeline>
-            </section>
+		<img class="logo" width="100" alt="vRA Logo" src="../assets/sb.svg">
+		<img class="logo" width="100" alt="vRA Logo" src="../assets/cs.svg">
+	    </section>
         </nav>
     </div>
 </div>

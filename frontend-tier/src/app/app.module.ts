@@ -5,7 +5,6 @@ import { ClarityModule, ClrFormsNextModule } from '@clr/angular';
 import { AppComponent } from './app.component';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http'
-import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 
 @NgModule({
   declarations: [
@@ -17,8 +16,7 @@ import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
     ClarityModule,
     ClrFormsNextModule,
     FormsModule,
-    HttpClientModule,
-    NgxTwitterTimelineModule.forRoot()
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
