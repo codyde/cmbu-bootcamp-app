@@ -14,18 +14,18 @@ input[type="textarea"], textarea {
     background-color : #d1d1d1; 
   }
 
-@media screen and (min-width: 481px) and (max-width: 1024px) {
-.sidenav-content { display: block; }  /* show it on small screens */
+@media screen and (min-width: 481px) {
+nav { display: block; }  /* show it on small screens */
 }
 
 @media screen and (min-width: 0px) and (max-width: 480px) {
-.sidenav-content { display: none; }   /* hide it elsewhere */
+nav { display: none; }   /* hide it elsewhere */
 }
 
 @media screen and (min-width: 0px) and (max-width: 480px) {
     .hiddenicons { display: block; }  /* show it on small screens */
     }
 
-@media screen and (min-width: 481px) and (max-width: 1024px) {
+@media screen and (min-width: 481px) {
     .hiddenicons { display: none; }  /* show it on small screens */
     }
