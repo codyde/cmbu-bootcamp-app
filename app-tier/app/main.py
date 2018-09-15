@@ -4,8 +4,11 @@ import json
 from flask_cors import CORS
 import psycopg2
 from psycopg2.extras import RealDictCursor
+from flask_socketio import SocketIO, emit
+
 
 app = Flask(__name__)
+socketio = SocketIO(app)
 CORS(app)
 
 @app.route("/api/post", methods=["POST"])
@@ -34,6 +37,10 @@ def get_health():
     stats = "{'status':'completed','platform':'healthy'}"
     print(stats)
     return jsonify(stats)
+
+@socketio.on('create')
+def on_create(data):
+    emit('create_record', 'test':'test')
 
 @app.after_request
 def after_request(response):
