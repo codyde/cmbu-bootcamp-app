@@ -40,7 +40,7 @@ def get_health():
 
 @socketio.on('create')
 def on_create(data):
-    emit('create_record', 'test':'test')
+    emit('create_record', {'test':'test'})
 
 @app.after_request
 def after_request(response):
