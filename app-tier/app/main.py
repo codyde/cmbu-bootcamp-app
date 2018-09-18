@@ -7,9 +7,12 @@ from psycopg2.extras import RealDictCursor
 from flask_socketio import SocketIO, emit
 
 
+
+
 app = Flask(__name__)
 socketio = SocketIO(app)
 CORS(app)
+
 
 @app.route("/api/post", methods=["POST"])
 def insert_post():

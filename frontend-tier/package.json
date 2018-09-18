@@ -24,10 +24,7 @@
     "@clr/icons": "^0.13.0",
     "@clr/ui": "^0.13.0",
     "@webcomponents/custom-elements": "^1.2.0",
-    "angular2-chartjs": "^0.5.1",
-    "chart.js": "^2.7.2",
     "core-js": "^2.5.4",
-    "ng2-charts": "^1.6.0",
     "rxjs": "^6.2.2",
     "zone.js": "~0.8.26"
   },

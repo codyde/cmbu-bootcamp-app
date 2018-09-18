@@ -4,3 +4,4 @@ psycopg2
 flask_cors
 flask-socketio 
 eventlet
+uwsgi 
