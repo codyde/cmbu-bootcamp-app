@@ -5,13 +5,16 @@ from flask_cors import CORS
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from flask_socketio import SocketIO, emit
+from gevent import monkey
+from threading import Thread
 
-
-
+monkey.patch_all()
 
 app = Flask(__name__)
+app.secret_key = "super secret key"
 socketio = SocketIO(app)
 CORS(app)
+thread = None
 
 
 @app.route("/api/post", methods=["POST"])
@@ -43,7 +46,8 @@ def get_health():
 
 @socketio.on('create')
 def on_create(data):
-    emit('create_record', {'test':'test'})
+    print("this test is a thing")
+    emit('join_room', {'room': 'the pants room'})
 
 @app.after_request
 def after_request(response):
