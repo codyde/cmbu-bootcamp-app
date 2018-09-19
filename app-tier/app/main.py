@@ -26,6 +26,7 @@ def insert_post():
     cur = conn.cursor()
     cur.execute("INSERT INTO textData (title, text) VALUES (%s, %s)", (_title, _text))
     conn.commit()
+    print("Data push happening now")
     return request.data
 
 @app.route("/api/posts", methods=["GET"])
