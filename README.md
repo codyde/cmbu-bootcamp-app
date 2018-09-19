@@ -30,5 +30,4 @@ This application was created to get away form demoing Wordpress as the "gold sta
 * Add sockets support
 * Merge flask routes into 1 route instead of 2 (RESTful Model) 
 * Leverage GIT Branching to change ClarityUI theme Light to Dark
-* More UI additions 
 * Include new routing 
