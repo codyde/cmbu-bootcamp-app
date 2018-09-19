@@ -20,7 +20,6 @@ thread = None
 @app.route("/api/post", methods=["POST"])
 def insert_post():
     req = request.get_json()
-    print(req)
     _title = req['title']
     _text = req['text']
     conn = psycopg2.connect("host=db dbname=posts user=postgres password=postgres_password")
@@ -35,18 +34,15 @@ def get_posts():
     cur = conn.cursor(cursor_factory=RealDictCursor)
     data = cur.execute('SELECT * FROM textData')
     test = cur.fetchall()
-    print(json.dumps(test))
     return jsonify(test)
 
 @app.route("/api/health", methods=["GET"])
 def get_health():
     stats = "{'status':'completed','platform':'healthy'}"
-    print(stats)
     return jsonify(stats)
 
 @socketio.on('create')
 def on_create(data):
-    print("this test is a thing")
     emit('join_room', {'room': 'the pants room'})
 
 @app.after_request
