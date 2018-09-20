@@ -1,6 +1,6 @@
 # Demonstration Application for VMware Cloud Automation Services 
 
-This application was created to get away form demoing Wordpress as the "gold standard" of applications. Focused on creating an application that communicates between multiple tiers (3), is responsive, and leverages technologies and languages that are common place in developer communities. It was designed as cloud native first from a Docker perspective (included is the docker compose file) but also includes the Kubernetes YAML file for deploying to a Kubernetes cluster.
+This application was created to get away from demoing Wordpress as the "gold standard" of applications. Focused on creating an application that communicates between multiple tiers (3), is responsive, and leverages technologies and languages that are common place in developer communities. It was designed as cloud native first from a Docker perspective (included is the docker compose file) but also includes the Kubernetes YAML file for deploying to a Kubernetes cluster.
 
 ## Application Description 
 
