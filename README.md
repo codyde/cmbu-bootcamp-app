@@ -10,7 +10,7 @@ This application was created to get away form demoing Wordpress as the "gold sta
 * NGINX hosting Angular app and also providing reverse proxy functionality to the App Tier. Reason for this is since Angular is a client side extension, connecting to the app directly causes it to fail since it can't resolve DNS
 * Guestbook/Chat/Twitter clone - post a message, it pushes to the API, and the api inserts into the database tier 
 * Refreshes the inbound content via API every 2 seconds from the client browser (horribly inefficient, PR it!)
-* Scalable to N number of pods
+* Scalable to N number of 
 
 # Tier 2 - App Tier - API 
 
@@ -23,6 +23,7 @@ This application was created to get away form demoing Wordpress as the "gold sta
 
 * Postgresql 9.5 database (named 'posts')
 * Precreated table (named 'textData') 
+* Do not scale this pod; bad things will happen
 
 
 ## Todo's
