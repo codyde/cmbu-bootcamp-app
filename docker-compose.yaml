@@ -29,7 +29,7 @@ services:
     build:
       context: ./db-tier
       dockerfile: ./Dockerfile
-    image: codydearkland/cmbu-db-app:latest
+    image: harbor.humblelab.com/library/cmbu-db-app:latest
     environment:
       POSTGRES_USER: postgres
     networks:
