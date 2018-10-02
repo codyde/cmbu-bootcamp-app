@@ -7,7 +7,7 @@ services:
     build:
       context: ./frontend-tier
       dockerfile: ./Dockerfile
-    image: codydearkland/cmbu-app-frontend:latest
+    image: harbor.humblelab.com/library/cmbu-app-frontend:latest
     depends_on:
       - pyapi
     ports:
@@ -19,7 +19,7 @@ services:
     build:
       context: ./app-tier
       dockerfile: ./Dockerfile
-    image: codydearkland/cmbu-app-backend:latest
+    image: harbor.humblelab.com/library/cmbu-app-backend:latest
     depends_on:
       - db
     networks:
@@ -29,7 +29,7 @@ services:
     build:
       context: ./db-tier
       dockerfile: ./Dockerfile
-    image: codydearkland/cmbu-db-app:latest
+    image: harbor.humblelab.com/library/cmbu-db-app:latest
     environment:
       POSTGRES_USER: postgres
     networks:
