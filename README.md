@@ -1,6 +1,6 @@
 # Demonstration Application for VMware Cloud Automation Services (CAS)
 
-Focused on creating an application that communicates between multiple tiers (3), is responsive, and leverages technologies and languages that are common place in developer communities. It was designed as cloud native first from a Docker perspective (included is the docker compose file) but also includes the Kubernetes YAML file for deploying to a Kubernetes cluster.
+Multi-tier application (3), responsive, and leverages technologies and languages that are common place in developer communities. It was designed as cloud native first from a Docker perspective (included is the docker compose file) but also includes the Kubernetes YAML file for deploying to a Kubernetes cluster.
 
 ## Application Description 
 
