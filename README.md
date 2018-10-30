@@ -31,3 +31,6 @@ Multi-tier application (3), responsive, and leverages technologies and languages
 * Add sockets.io support
 * Merge flask routes into 1 route instead of 2 (RESTful Model) 
 * Include new routing 
+
+
+Demos are cool
