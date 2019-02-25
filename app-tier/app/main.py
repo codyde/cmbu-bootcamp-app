@@ -27,6 +27,10 @@ def insert_post():
     cur.execute("INSERT INTO textData (title, text) VALUES (%s, %s)", (_title, _text))
     conn.commit()
     print("Data push happening now")
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    data = cur.execute('SELECT * FROM textData')
+    test = cur.fetchall()
+    socketio.emit('my event', test, namespace='/api')
     return request.data
 
 @app.route("/api/posts", methods=["GET"])
@@ -42,9 +46,17 @@ def get_health():
     stats = "{'status':'completed','platform':'healthy'}"
     return jsonify(stats)
 
-@socketio.on('create')
-def on_create(data):
-    emit('join_room', {'room': 'the pants room'})
+@socketio.on('my event', namespace='/api')
+def handle_event(data):
+    print('received')
+    return jsonify(data)
+
+@socketio.on('connected', namespace='/api')
+def handle_connect():
+    while True:
+        socketio.sleep(3)
+        print('connected')
+
 
 @app.after_request
 def after_request(response):
@@ -54,4 +66,4 @@ def after_request(response):
     return response
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',debug=True, port=80)
+    socketio.run(app,host='0.0.0.0',debug=True, port=80)

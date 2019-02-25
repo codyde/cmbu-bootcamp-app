@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Message } from "./message";
 import { PostsService } from "./posts.service";
+import { Observable } from "rxjs"
+import * as io from 'socket.io-client';
 
 export interface Post {
   title: string;
@@ -12,6 +14,11 @@ export interface Post {
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
+
+  private url = 'http://pyapi/api'
+
+  private socket; 
+
   public interval: any;
 
   @ViewChild("f")
@@ -21,24 +28,28 @@ export class AppComponent {
 
   public messages = [];
 
-  constructor(private postsService: PostsService) {}
-
-  ngOnInit() {
-    this.refreshData();
-    this.interval = setInterval(() => {
-      this.refreshData();
-    }, 2000);
+  constructor(private postsService: PostsService) {
   }
 
-  onSubmit(post: Post) {
-    this.postsService.newPost(post).subscribe(data => {});
-    this.formValues.resetForm();
-  }
-
-  refreshData() {
-    console.log("Polling...");
-    this.postsService.getPosts().subscribe(data => {
-      this.messages = data;
-    });
-  }
+ngOnInit() {
+  this.refreshData()
+  this.socket = io(this.url);
+  this.socket.on('my event', (message) => { this.messages = message; });
+  console.log(this.message)
+  //this.interval = setInterval(() => {
+  //  this.refreshData();
+  //}, 2000);
 }
+
+onSubmit(post: Post) {
+  this.postsService.newPost(post).subscribe(data => {});
+  this.formValues.resetForm();
+}
+
+refreshData() {
+  this.postsService.getPosts().subscribe(data => {
+    this.messages = data;
+  });
+}
+}
+
