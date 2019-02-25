@@ -28,8 +28,9 @@ def insert_post():
     conn.commit()
     print("Data push happening now")
     cur = conn.cursor(cursor_factory=RealDictCursor)
-    data = cur.execute('SELECT * FROM textData')
+    data = cur.execute('SELECT * FROM textData ORDER BY id DESC')
     test = cur.fetchall()
+    print(test)
     socketio.emit('my event', test)
     return request.data
 
