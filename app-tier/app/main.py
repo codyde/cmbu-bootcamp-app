@@ -38,7 +38,7 @@ def insert_post():
 def get_posts():
     conn = psycopg2.connect("host=db dbname=posts user=postgres password=postgres_password")
     cur = conn.cursor(cursor_factory=RealDictCursor)
-    data = cur.execute('SELECT * FROM textData')
+    data = cur.execute('SELECT * FROM textData ORDER BY id DESC')
     test = cur.fetchall()
     return jsonify(test)
 
