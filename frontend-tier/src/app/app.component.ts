@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Message } from "./message";
 import { PostsService } from "./posts.service";
+import { environment } from '../environments/environment.prod';
 import { Observable } from "rxjs"
 import * as io from 'socket.io-client';
 
@@ -15,7 +16,7 @@ export interface Post {
 })
 export class AppComponent {
 
-  private url = 'http://pyapi/api'
+  private url = environment.api_server
 
   private socket; 
 
