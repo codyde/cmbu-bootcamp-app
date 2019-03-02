@@ -7,4 +7,3 @@ eventlet
 uwsgi
 gevent
 gunicorn
-supervisor
