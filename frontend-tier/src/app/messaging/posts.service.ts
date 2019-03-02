@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Message } from './message'
-import { environment } from '../environments/environment.prod';
+import { environment } from '../../environments/environment.prod';
 
 
 const httpOptions = {
