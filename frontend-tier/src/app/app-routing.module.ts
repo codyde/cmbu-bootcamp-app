@@ -1,3 +1,4 @@
+import { NgModule } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router'
 import { AppComponent } from './app.component'
 import { Apidetailscomponent } from './api-details/api-details.component'
@@ -22,4 +23,8 @@ const routes: Routes = [
     },
   ];
 
-export const appRouterModule = RouterModule.forRoot(routes)
+  @NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule],
+  })
+  export class AppRoutingModule {}
