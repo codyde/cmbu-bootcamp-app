@@ -1,31 +1,41 @@
 <div class="main-container">
-        <header class="header-6">
-          <div class="branding">
+    <header class="header-6">
+        <div class="branding">
             <a href="/" class="nav-link">
-              <clr-icon shape="vm"></clr-icon>
-              <span class="title">Cloud Automation Services Demo</span>
+                <clr-icon shape="vm"></clr-icon>
+                <span class="title">Cloud Automation Services Demo</span>
             </a>
-          </div>
-          <div class="header-nav">
+        </div>
+        <div class="header-nav">
             <a routerLink="/messaging" routerLinkActive="active" class="nav-link nav-text">Messaging</a>
             <a routerLink="/detail" routerLinkActive="active" class="nav-link nav-text">API Interaction</a>
         </div>
-        </header>
-        <nav class="subnav">
-          <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Cloud Services Page</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">VMware Management Blogs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">CAS Blueprints Gitlab</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">VMware CODE Samples</a>
-            </li>
-          </ul>
+    </header>
+    <nav class="subnav">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Cloud Services Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">VMware Management Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">CAS Blueprints Gitlab</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">VMware CODE Samples</a>
+                </li>
+            </ul>
         </nav>
-<router-outlet></router-outlet>
-</div>
+    <div class="content-container">
+        <div class="content-area">
+            <router-outlet></router-outlet>
+        </div>
+        <nav class="sidenav">
+            <section class="sidenav-content">
+                <img class="logo" width="100" alt="vRA Logo" src="../assets/ca.svg">
+                <img class="logo" width="100" alt="vRA Logo" src="../assets/sb.svg">
+                <img class="logo" width="100" alt="vRA Logo" src="../assets/cs.svg">
+            </section>
+        </nav>
+    </div>
