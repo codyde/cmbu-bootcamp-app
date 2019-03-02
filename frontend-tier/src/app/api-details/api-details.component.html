@@ -51,17 +51,15 @@
       </table>
       <br>
       <div style="display: block" *ngIf="polarAreaChartData">
-        <canvas class="myChart" 
-                baseChart width="400"
-                height="150" 
-                [data]="polarAreaChartData"
-                [labels]="polarAreaChartLabels" 
-                [legend]="polarAreaLegend" 
-                [chartType]="polarAreaChartType"
-                (chartHover)="chartHovered($event)" 
-                (chartClick)="chartClicked($event)">
-        </canvas>
-      </div>
+          <canvas class="myChart" baseChart width="400" height="150"
+                  [data]="polarAreaChartData"
+                  [labels]="polarAreaChartLabels"
+                  [legend]="polarAreaLegend"
+                  [chartType]="polarAreaChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)">
+                </canvas>
+        </div>
     </div>
   </div>
 </div>

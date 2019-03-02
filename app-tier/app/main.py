@@ -1,21 +1,22 @@
 from flask import Flask, jsonify, request
+from gevent import monkey
+monkey.patch_all()
 import requests
 import json
+from caspyr import Session, Deployment, Project, User, Blueprint, CloudAccount
 from flask_cors import CORS
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from flask_socketio import SocketIO, emit
-from gevent import monkey
 from threading import Thread
 
-monkey.patch_all()
 
 app = Flask(__name__)
+
 app.secret_key = "super secret key"
 socketio = SocketIO(app)
 CORS(app)
 thread = None
-
 
 @app.route("/api/post", methods=["POST"])
 def insert_post():
@@ -47,6 +48,22 @@ def get_health():
     stats = "{'status':'completed','platform':'healthy'}"
     return jsonify(stats)
 
+@app.route("/api", methods=["POST"])
+def get_data():
+    req = request.get_json()
+    token = req['cspapitoken']
+    s = Session.login(token)
+    serialData = {}
+    deployments = len(Deployment.list(s))
+    bps = len(Blueprint.list(s))
+    projects = len(Project.list(s))
+    cloudaccounts = len(CloudAccount.list(s))
+    serialData['deployments'] = deployments
+    serialData['bps'] = bps
+    serialData['projects'] = projects
+    serialData['cloudaccounts'] = cloudaccounts
+    return jsonify(serialData)
+
 @socketio.on('my event')
 def handle_event(data):
     print('received')
@@ -67,4 +84,4 @@ def after_request(response):
     return response
 
 if __name__ == "__main__":
-    socketio.run(app,host='0.0.0.0',debug=True, port=80)
+    app.run(host='0.0.0.0',debug=True, port=80)

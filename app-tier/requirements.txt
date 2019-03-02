@@ -6,3 +6,5 @@ flask-socketio
 eventlet
 uwsgi
 gevent
+gunicorn
+supervisor

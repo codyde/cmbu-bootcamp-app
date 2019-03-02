@@ -18,7 +18,7 @@ const routes: Routes = [
     // map '/' to '/persons' as our default route
     {
       path: '',
-      redirectTo: '/message',
+      redirectTo: '/messaging',
       pathMatch: 'full'
     },
   ];

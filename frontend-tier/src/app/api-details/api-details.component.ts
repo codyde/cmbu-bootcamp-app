@@ -43,6 +43,7 @@ export class Apidetailscomponent {
   constructor(private rs: RestService) {}
 
   onSubmit(token: Token) {
+    console.log(token);
     this.show = true;
     this.rs.newCall(token).subscribe((data: Casdata) => {
       this.casdata = data;

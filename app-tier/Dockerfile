@@ -1,7 +1,7 @@
 FROM alpine
 
-LABEL maintainer "Roman Dodin <dodin.roman@gmail.com>"
-LABEL description "Nginx + uWSGI + Flask based on Alpine Linux and managed by Supervisord"
+LABEL maintainer "Cody De Arkland <cdearkland@vmware.com>"
+LABEL description "Python API tier running flask, gunicorn, and supervisord"
 
 # Copy python requirements file
 COPY requirements.txt /tmp/requirements.txt
@@ -9,9 +9,6 @@ COPY requirements.txt /tmp/requirements.txt
 RUN apk add --no-cache \
     python3 \
     bash \
-    nginx \
-    uwsgi \
-    uwsgi-python3 \
     postgresql-dev \
     gcc \ 
     python3-dev \ 
@@ -22,19 +19,12 @@ RUN apk add --no-cache \
     rm -r /usr/lib/python*/ensurepip && \
     pip3 install --upgrade pip setuptools && \
     pip3 install -r /tmp/requirements.txt && \
-    rm /etc/nginx/conf.d/default.conf && \
     rm -r /root/.cache
 
-# Copy the Nginx global conf
-COPY nginx.conf /etc/nginx/
-# Copy the Flask Nginx site conf
-COPY flask-site-nginx.conf /etc/nginx/conf.d/
-# Copy the base uWSGI ini file to enable default dynamic uwsgi process number
-COPY uwsgi.ini /etc/uwsgi/
-# Custom Supervisord config
+RUN pip install git+https://github.com/Supervisor/supervisor@master
 
-# Add demo app
 COPY ./app /app
-WORKDIR /app
+COPY app.conf /usr/supervisord.conf
+COPY ./caspyr /app/caspyr
 
-CMD ["python3","/app/main.py"]
+CMD ["/usr/bin/supervisord","--nodaemon","-c","/usr/supervisord.conf"]
