@@ -1,14 +1,24 @@
-<div class="content-area">
-            <h1>
-                Welcome to the CMBU Demo Application!
-            </h1>
-            <div class="hiddenicons">
-                <div class=row>
-                    <img class="logo" width="50" alt="vRA Logo" src="../assets/ca.svg">
-                    <img class="logo" width="50" alt="vRA Logo" src="../assets/sb.svg">
-                    <img class="logo" width="50" alt="vRA Logo" src="../assets/cs.svg">
+<div>
+        <div class="clr-row">
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            Real-Time Messaging Demo
+                        </div>
+                        <div class="card-block">
+                            <div class="card-text">
+                                The "Messaging" component consists of an Angular (ClarityUI) frontend hosted on NGINX which communicates 
+                                with a Python Flask API application backend. This API tier provides 2 way communication between the client
+                                side frontend and the Postgresql database backend utiliing websockets to provide real-time updates!
+                                <br>
+                                <br>
+                                Enter a Title and a Message below to see the updates!
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+          <div>
         <form #f="ngForm" class="clr-form clr-form-horizontal" (ngSubmit)="onSubmit(f.value)">
             <div class="clr-form-control">
                 <label for="example" class="clr-control-label">Title</label>

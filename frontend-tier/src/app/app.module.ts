@@ -9,13 +9,15 @@ import { Apidetailscomponent } from './api-details/api-details.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ChartsModule } from 'ng2-charts';
 import { MessagingComponent } from './messaging/messaging.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     Apidetailscomponent,
-    MessagingComponent
+    MessagingComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,7 @@ import { MessagingComponent } from './messaging/messaging.component';
     HttpClientModule,
     ChartsModule, 
     AppRoutingModule
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
