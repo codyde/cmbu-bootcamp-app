@@ -8,20 +8,20 @@ Multi-tier application (3), responsive, and leverages technologies and languages
 
 * Angular 6 front end with VMware ClarityUI (https://vmware.github.io/clarity/)
 * NGINX hosting Angular app and also providing reverse proxy functionality to the App Tier. Reason for this is since Angular is a client side extension, connecting to the app directly causes it to fail since it can't resolve DNS
-* Guestbook/Chat/Twitter clone - post a message, it pushes to the API, and the api inserts into the database tier 
-* Refreshes the inbound content via API every 2 seconds from the client browser (horribly inefficient, PR it!)
-* Scalable to N number of 
+* Messaging Application leverages Sockets.IO to open a Socket channel between the client and server for rapid updates
+* API Demo Interacts with the Cloud Automation Services API's to return information/details around a given CAS Org (leveraging the CSP refresh Token)
+
 
 # Tier 2 - App Tier - API 
 
 * Python Flask based application
-* 2 Methods, POST and GET. POST sends data to the Database, GET returns data to be visible on the screen.
+* Handles interaction between the Frontend and Database tier, the Frontend and the websocket interaction, as well as the frontend to CAS API interaction
 * Scalable to N number of pods 
 * Needs to be instantiated BEFORE the Frontend
 
 # Tier 3 - DB Tier - Data 
 
-* Postgresql 9.5 database (named 'posts')
+* Postgresql 10 database (named 'posts')
 * Precreated table (named 'textData') 
 * Do not scale this pod; bad things will happen
 
