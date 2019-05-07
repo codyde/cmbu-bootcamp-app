@@ -13,7 +13,6 @@ inputs:
     default: vSphere
   sshKey:
     type: string
-    encrypted: true
   envsize:
     type: string
     enum:
@@ -27,7 +26,7 @@ resources:
         phoneHomeShouldWait: true
         phoneHomeTimeoutSeconds: 600
         phoneHomeFailOnTimeout: true
-      folderName: '${input.environment == "VMC" ? "Workload" : ""}'
+      folderName: '${input.environment == "VMC" ? "Workloads" : ""}'
       image: ubuntu
       flavor: medium
       count: '${input.envsize == "Small" ? 1 : 2}'
@@ -59,7 +58,7 @@ resources:
   apitier:
     type: Cloud.Machine
     properties:
-      folderName: '${input.environment == "VMC" ? "Workload" : ""}'
+      folderName: '${input.environment == "VMC" ? "Workloads" : ""}'
       image: ubuntu
       flavor: small
       remoteAccess:
@@ -93,7 +92,7 @@ resources:
   db:
     type: Cloud.Machine
     properties:
-      folderName: '${input.environment == "VMC" ? "Workload" : ""}'
+      folderName: '${input.environment == "VMC" ? "Workloads" : ""}'
       image: ubuntu
       flavor: small
       remoteAccess:
