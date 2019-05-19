@@ -12,7 +12,7 @@ A blueprint.yaml file for import into Cloud Automation Services is included as w
 
 # Tier 1 - Frontend Application - User Presentation 
 
-* Angular 6 front end with VMware ClarityUI (https://vmware.github.io/clarity/)
+* Angular 7 front end with VMware ClarityUI (https://vmware.github.io/clarity/)
 * NGINX hosting Angular app and also providing reverse proxy functionality to the App Tier. Reason for this is since Angular is a client side extension, connecting to the app directly causes it to fail since it can't resolve DNS
 * Messaging Application leverages Sockets.IO to open a Socket channel between the client and server for rapid updates
 * API Demo Interacts with the Cloud Automation Services API's to return information/details around a given CAS Org (leveraging the CSP refresh Token)
