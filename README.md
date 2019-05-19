@@ -31,7 +31,6 @@ A blueprint.yaml file for import into Cloud Automation Services is included as w
 * Precreated table (named 'textData') 
 * Do not scale this pod; bad things will happen
 
-
 ## Todo's
 
 * Merge flask routes into 1 route instead of 2 (RESTful Model) 
