@@ -5,19 +5,15 @@ import { ClarityModule } from '@clr/angular';
 import { AppComponent } from './app.component';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
-import { Apidetailscomponent } from './api-details/api-details.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ChartsModule } from 'ng2-charts';
 import { MessagingComponent } from './messaging/messaging.component';
-import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    Apidetailscomponent,
-    MessagingComponent,
-    HomeComponent
+    MessagingComponent
   ],
   imports: [
     BrowserModule,
