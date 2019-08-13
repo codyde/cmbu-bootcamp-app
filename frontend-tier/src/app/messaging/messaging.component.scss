@@ -39,3 +39,27 @@ nav { display: none; }   /* hide it elsewhere */
 @media screen and (min-width: 0px) and (max-width: 480px) {
     nav { display: none; }   /* hide it elsewhere */
     }
+
+.card {
+    color: white;
+}
+
+.consul {
+    background-color: #CA2171;
+}
+
+.tf {
+    background-color: #623CE4;
+}
+
+.nomad {
+    background-color: #00B475;
+}
+
+.vault {
+    background-color: #6A6D7A;
+}
+
+.hashi { 
+    height: 150px;
+}

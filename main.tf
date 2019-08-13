@@ -35,7 +35,7 @@ resource "aws_instance" "Frontend" {
       "sudo cp /tmp/app-frontend/nginx/default.conf /etc/nginx/conf.d/default.conf",
       "sudo rm -rf /etc/nginx/sites-available/default",
       "sudo sed -i 's@include /etc/nginx/sites-enabled/*@# include /etc/nginx/sites-enabled/*@' /etc/nginx/nginx.conf",
-      "sudo sed -i 's@pyapi@${aws_instance.api.private_dns}@' /etc/nginx/conf.d/default.conf",
+      "sudo sed -i 's@pyapi@${aws_instance.api.private_ip}@' /etc/nginx/conf.d/default.conf",
       "sudo systemctl restart nginx"
     ]
 
