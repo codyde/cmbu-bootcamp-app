@@ -14,7 +14,6 @@ resource "aws_instance" "Frontend" {
     instance_type = "t2.medium"
     security_groups = ["${aws_security_group.ssh.name}"]
     key_name        = "${aws_key_pair.generated_key.key_name}"
-    tags { Name = "frontend" }
 
     provisioner "remote-exec" {
     inline = [
@@ -41,6 +40,7 @@ resource "aws_instance" "Frontend" {
     ]
 
     connection {
+      host        = "${self.public_ip}"
       type        = "ssh"
       private_key = "${tls_private_key.example.private_key_pem}"
       user        = "ubuntu"
@@ -54,7 +54,6 @@ resource "aws_instance" "api" {
     instance_type = "t2.medium"
     security_groups = ["${aws_security_group.ssh.name}"]
     key_name        = "${aws_key_pair.generated_key.key_name}"
-    tags { Name = "api" }
 
     provisioner "remote-exec" {
     inline = [
@@ -71,6 +70,7 @@ resource "aws_instance" "api" {
       "sudo pip3 install -r /tmp/api-tier/requirements.txt",
       "sudo pip install git+https://github.com/Supervisor/supervisor@master",
       "sudo mkdir /app && sudo cp app/* /app",
+      "sudo sed -i 's@host=db@host=${aws_db_instance.database.address}@' /app/main.py",
       "sudo cp app.conf /usr/supervisord.conf",
       "sudo supervisord -c /usr/supervisord.conf"
     ]
@@ -78,10 +78,53 @@ resource "aws_instance" "api" {
 
     connection {
       type        = "ssh"
+      host        = "${self.public_ip}"
       private_key = "${tls_private_key.example.private_key_pem}"
       user        = "ubuntu"
       timeout     = "1m"
     }
+}
+
+resource "aws_db_instance" "database" {
+ allocated_storage    = 20
+  storage_type         = "gp2"
+  engine               = "postgres"
+  engine_version       = "10.1"
+  instance_class       = "db.t2.medium"
+  name                 = "pgdb"
+  username             = "postgres"
+  password             = "postgres_password"
+  skip_final_snapshot = true
+  publicly_accessible = true
+  vpc_security_group_ids = ["${aws_security_group.postgres.id}"]
+  }
+
+resource "aws_security_group" "postgres" {
+  name   = "postgres"
+  ingress {
+    from_port = 0
+    to_port   = 5432
+    protocol  = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource null_resource "configure_db" {
+  depends_on = [aws_security_group.postgres, aws_db_instance.database]
+
+  provisioner "local-exec" {
+    command = "psql -d ${aws_db_instance.database.name} -U${aws_db_instance.database.username} -h ${aws_db_instance.database.address} < ./files/configure-data.sql"
+    environment = {
+      PGPASSWORD="${aws_db_instance.database.password}"
+    }
+  }
 }
 
 resource "tls_private_key" "example" {
