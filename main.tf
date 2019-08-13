@@ -59,7 +59,7 @@ resource "aws_instance" "api" {
     inline = [
       "sleep 20",
       "sudo apt update -y",
-      "sudo apt install python3-dev libpq-dev build-essential libssl-dev libffi-dev python3-setptools postgresql-dev -y",
+      "sudo apt install python3-dev libpq-dev build-essential libssl-dev libffi-dev python3-setuptools postgresql-dev -y",
       "sudo apt add repository universe && sudo apt update -y",
       "sudo ufw allow 80",
       "sudo apt install -y python-pip python3-pip",
