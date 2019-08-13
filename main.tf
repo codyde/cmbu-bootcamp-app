@@ -169,3 +169,13 @@ resource "aws_security_group" "ssh" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+output "frontend_ip_addr" {
+  value = aws_instance.Frontend.public_ip
+  description = "Frontend IP Address"
+}
+
+output "api_tier_ip_adder" {
+    value = aws_instance.api.public_ip
+    description = "API Tier IP Address"
+}
