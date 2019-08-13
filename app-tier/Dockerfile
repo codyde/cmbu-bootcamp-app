@@ -25,6 +25,5 @@ RUN pip install git+https://github.com/Supervisor/supervisor@master
 
 COPY ./app /app
 COPY app.conf /usr/supervisord.conf
-COPY ./caspyr /app/caspyr
 
 CMD ["/usr/bin/supervisord","--nodaemon","-c","/usr/supervisord.conf"]
