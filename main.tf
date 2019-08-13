@@ -62,19 +62,17 @@ resource "aws_instance" "api" {
       "sudo apt update -y",
       "sudo apt install python3-dev libpq-dev build-essential libssl-dev libffi-dev python3-setptools postgresql-dev -y",
       "sudo apt add repository universe && sudo apt update -y",
-      "sudo apt install python3-dev libpq-dev build-essential libssl-dev libffi-dev python3-setptools postgresql-dev -y",
       "sudo ufw allow 80",
       "sudo apt install -y python-pip python3-pip",
       "sudo pip3 install --upgrade pip",
       "/usr/bin/git clone https://github.com/codyde/cmbu-bootcamp-app -b grant && mkdir /tmp/api-tier",
       "mv ./cmbu-bootcamp-app/app-tier/* /tmp/api-tier && cd /tmp/api-tier",
       "sudo pip3 install psycopg2-binary",
-      "pip3 install -r /tmp/api-tier/requirements.txt",
+      "sudo pip3 install -r /tmp/api-tier/requirements.txt",
       "sudo pip install git+https://github.com/Supervisor/supervisor@master",
       "sudo mkdir /app && sudo cp app/* /app",
       "sudo cp app.conf /usr/supervisord.conf",
-      "sudo cp -r ./caspyr /app/caspyr",
-      "supervisord -c /usr/supervisord.conf"
+      "sudo supervisord -c /usr/supervisord.conf"
     ]
     }
 
