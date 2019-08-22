@@ -22,7 +22,7 @@ resource "aws_instance" "Frontend" {
       "sudo apt install nginx curl git -y",
       "sudo apt install -y git nginx nodejs",
       "sudo ufw allow http",
-      "/usr/bin/git clone https://github.com/codyde/cmbu-bootcamp-app -b grant && mkdir /tmp/app-frontend",
+      "/usr/bin/git clone https://github.com/codyde/cmbu-bootcamp-app -b vmworld2019 && mkdir /tmp/app-frontend",
       "mv ./cmbu-bootcamp-app/frontend-tier/* /tmp/app-frontend && cd /tmp/app-frontend",
       "/usr/bin/npx @angular/cli analytics off",
       "sudo npm install -g @angular/cli",
@@ -64,7 +64,7 @@ resource "aws_instance" "api" {
       "sudo ufw allow 80",
       "sudo apt install -y python-pip python3-pip",
       "sudo pip3 install --upgrade pip",
-      "/usr/bin/git clone https://github.com/codyde/cmbu-bootcamp-app -b grant && mkdir /tmp/api-tier",
+      "/usr/bin/git clone https://github.com/codyde/cmbu-bootcamp-app -b vmworld2019 && mkdir /tmp/api-tier",
       "mv ./cmbu-bootcamp-app/app-tier/* /tmp/api-tier && cd /tmp/api-tier",
       "sudo pip3 install psycopg2-binary",
       "sudo pip3 install -r /tmp/api-tier/requirements.txt",
@@ -138,8 +138,8 @@ resource "aws_key_pair" "generated_key" {
 }
 
 resource "aws_security_group" "ssh" {
-  name        = "grant ssh"
-  description = "grant ssh"
+  name        = "vmworld2019 ssh"
+  description = "vmworld2019 ssh"
 
   ingress {
     from_port   = 22
