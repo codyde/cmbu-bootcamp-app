@@ -1,20 +1,21 @@
 <div>
     <div class="clr-row">
-        <div class="clr-col-lg-12 clr-col-12">
-            <a href="https://www.vmworld.com" class="card clickable">
-                <div class="card-header" style="font-weight: bold">
-                    Welcome to VMworld 2019
+        <div>
+            <div class="card">
+                <div class="card-header">
+                    Real-Time Messaging Demo
                 </div>
                 <div class="card-block">
-                    <p class="card-text">
-                        <img src="../assets/vmworld.jpg" style="margin:20 auto;" />
+                    <div class="card-text">
+                        The "Messaging" component consists of an Angular (ClarityUI) frontend hosted on NGINX which communicates 
+                        with a Python Flask API application backend. This API tier provides 2 way communication between the client
+                        side frontend and the Postgresql database backend utilizing websockets to provide real-time updates!
                         <br>
-                    </p>
+                        <br>
+                        Enter a Title and a Message below to see the updates!
+                    </div>
                 </div>
-                <div class="card-footer">
-                    Welcome to VMworld
-                </div>
-            </a>
+            </div>
         </div>
     </div>
     <form #f="ngForm" class="clr-form clr-form-horizontal" (ngSubmit)="onSubmit(f.value)">

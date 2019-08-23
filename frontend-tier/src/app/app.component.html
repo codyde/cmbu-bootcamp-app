@@ -3,7 +3,7 @@
         <div class="branding">
             <a href="/" class="nav-link">
                 <clr-icon shape="vm"></clr-icon>
-                <span class="title">TechDemo</span>
+                <span class="title">VMworld 2019</span>
             </a>
         </div>
     </header>
@@ -19,6 +19,8 @@
             <router-outlet></router-outlet>
         </div>
         <clr-vertical-nav [clrVerticalNavCollapsible]="true">
+                <a clrVerticalNavLink routerLink="/home" routerLinkActive="active">
+                    <clr-icon clrVerticalNavIcon shape="talk-bubbles"></clr-icon>Home</a>
                 <a clrVerticalNavLink routerLink="/messaging" routerLinkActive="active">
                     <clr-icon clrVerticalNavIcon shape="talk-bubbles"></clr-icon>Message</a>
                 <div class="nav-divider"></div>

@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ChartsModule } from 'ng2-charts';
 import { MessagingComponent } from './messaging/messaging.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MessagingComponent
+    MessagingComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
