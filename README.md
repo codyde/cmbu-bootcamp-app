@@ -20,6 +20,8 @@ A blueprint.yaml file for import into Cloud Automation Services is included as w
 
 # Tier 2 - App Tier - API 
 
+
+
 * Python Flask based application
 * Handles interaction between the Frontend and Database tier, the Frontend and the websocket interaction, as well as the frontend to CAS API interaction
 * Scalable to N number of pods 
