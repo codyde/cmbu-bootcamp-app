@@ -6,3 +6,4 @@ eventlet
 uwsgi
 gevent
 gunicorn
+psycopg2
