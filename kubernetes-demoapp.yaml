@@ -1,33 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: db
-  namespace: cody-demo
-  labels:
-    app: bootcamp
-spec:
-  selector:
-    matchLabels:
-      app: bootcamp
-      role: db
-      tier: backend
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: bootcamp
-        role: db
-        tier: backend
-    spec:
-      containers:
-      - name: db
-        image: harbor.humblelab.com/library/cmbu-db-app:latest
-        ports:
-        - containerPort: 5432
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
   name: pyapi
   namespace: cody-demo
   labels:
@@ -51,6 +24,33 @@ spec:
         image: harbor.humblelab.com/library/cmbu-app-backend:latest
         ports:
         - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+  namespace: cody-demo
+  labels:
+    app: bootcamp
+spec:
+  selector:
+    matchLabels:
+      app: bootcamp
+      role: db
+      tier: backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: bootcamp
+        role: db
+        tier: backend
+    spec:
+      containers:
+      - name: db
+        image: harbor.humblelab.com/library/cmbu-db-app:latest
+        ports:
+        - containerPort: 5432
 ---
 apiVersion: apps/v1
 kind: Deployment
