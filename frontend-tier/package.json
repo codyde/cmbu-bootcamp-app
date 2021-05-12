@@ -26,7 +26,7 @@
     "@ngtools/webpack": "^7.3.3",
     "@types/socket.io": "^2.1.2",
     "@webcomponents/custom-elements": "^1.2.1",
-    "chart.js": "^2.7.3",
+    "chart.js": "^2.9.4",
     "core-js": "^2.6.5",
     "ng2-charts": "^1.6.0",
     "ngx-avatar": "^3.2.0",
